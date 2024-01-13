@@ -3,10 +3,30 @@ fn main() {
 
     sort(&mut arr);
     // TODO: print `arr`
+
+    println!("{:?}", arr);
 }
 
 // TODO: write `sort()` function
+fn sort(array : &mut [u64]) {
+    if array.len() < 2 {
+        return
+    }
 
+    for pos in 0..(array.len()-1) {
+        let mut min = array[pos];
+        let mut min_pos = pos;
+        for i in (pos+1)..array.len() {
+            if array[i] < min {
+                min = array[i];
+                min_pos = i;
+            }
+        }
+        let swap = array[pos];
+        array[pos] = min;
+        array[min_pos] = swap;
+    }
+}
 
 #[test]
 fn sort_array() {
