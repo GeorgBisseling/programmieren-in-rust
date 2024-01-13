@@ -1,7 +1,24 @@
 //! Aufgabe 2.1: Primzahltest
 
 fn main() {
+    for n in 1..21 {
+        let star = if is_prime(n) {"*"} else {""};
+        println!("{}{}", n, star);
+    }
+}
 
+fn is_prime(n : u64) -> bool {
+    if n < 2 { 
+        return false; 
+    }
+    let mut divisor = 2;
+    while divisor * divisor <= n {
+        if (n % divisor) == 0 {
+            return false;
+        }
+        divisor += 1;
+    }
+    return true;
 }
 
 #[test]
